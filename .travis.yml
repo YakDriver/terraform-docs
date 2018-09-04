@@ -12,8 +12,10 @@ jobs:
     - stage: test
       before_script:
         - env        
-        - git clone https://github.com/YakDriver/terraform-aws-docs.wiki.git
+        - git clone "https://github.com/${TRAVIS_REPO_SLUG}.wiki.git"
+        - cd "$(basename ${TRAVIS_REPO_SLUG})".wiki
         - ls -hal
+        - cat Home.md
         - go version
       script:
         - echo 'Script'
