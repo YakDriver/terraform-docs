@@ -1,0 +1,18 @@
+language: bash
+sudo: false
+
+before_install:
+  - echo 'before_install'
+
+install:
+  - echo 'install'
+
+jobs:
+  include:
+    - stage: test
+      before_script:
+        - env        
+        - git clone https://github.com/YakDriver/terraform-aws-docs.wiki.git
+        - ls -hal
+      script:
+        - echo 'Script'
