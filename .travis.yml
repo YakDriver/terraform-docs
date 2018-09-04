@@ -1,4 +1,4 @@
-language: bash
+language: go
 sudo: false
 
 before_install:
@@ -14,5 +14,6 @@ jobs:
         - env        
         - git clone https://github.com/YakDriver/terraform-aws-docs.wiki.git
         - ls -hal
+        - go version
       script:
         - echo 'Script'
