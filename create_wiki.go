@@ -177,6 +177,9 @@ func writeMDLink(n *html.Node, f io.Writer, replaceURL string) {
 					if strings.HasPrefix(href, "/docs") {
 						href = "https://www.terraform.io" + href
 					}
+					if boldList(linkText) {
+						linkText = "**" + linkText + "**"
+					}
 					io.WriteString(f, "["+linkText+"]("+href+")")
 				}
 				break
@@ -214,6 +217,16 @@ func blacklist(check string) bool {
 	case "All Providers":
 		return true
 	case "AWS Provider":
+		return true
+	}
+	return false
+}
+
+func boldList(check string) bool {
+	switch check {
+	case "Data Sources":
+		return true
+	case "EC2 Resources":
 		return true
 	}
 	return false
