@@ -11,11 +11,20 @@ jobs:
   include:
     - stage: test
       before_script:
-        - env        
+        - env
+        - go get golang.org/x/net/html
+        - git config --global user.email "${EMAIL_ADDRESS}"
+        - git config --global user.name "$(dirname ${TRAVIS_REPO_SLUG})"
         - git clone "https://github.com/${TRAVIS_REPO_SLUG}.wiki.git"
         - cd "$(basename ${TRAVIS_REPO_SLUG})".wiki
+        - git remote set-url origin "https://$(dirname ${TRAVIS_REPO_SLUG}):${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.wiki.git"
         - ls -hal
-        - cat Home.md
-        - go version
+        - cd ..
       script:
         - echo 'Script'
+        - go run create_wiki.go
+        - cp -Rf wiki/* "$(basename ${TRAVIS_REPO_SLUG})".wiki
+        - cd "$(basename ${TRAVIS_REPO_SLUG})".wiki
+        - git add .
+        - git commit -m "New wiki for $(date +%F\ %T)"
+        - git push
