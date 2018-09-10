@@ -1,2 +1,2 @@
 # [terraform-docs](https://github.com/YakDriver/terraform-docs/wiki)
-Easier format for Terraform AWS provider documentation.
+Links to the original terraform.io documentation, in an [easier format](https://github.com/YakDriver/terraform-docs/wiki). Click on the [wiki](https://github.com/YakDriver/terraform-docs/wiki) above.
