@@ -218,6 +218,18 @@ func blacklist(check string) bool {
 		return true
 	case "AWS Provider":
 		return true
+	case "Azure Provider":
+		return true
+	case "Google Provider":
+		return true
+	case "« Documentation Home":
+		return true
+	case "Alicloud Provider":
+		return true
+	case "Upcoming Community Events":
+		return true
+	case "OpenStack Provider":
+		return true
 	}
 	return false
 }
